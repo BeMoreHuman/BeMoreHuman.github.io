@@ -153,16 +153,16 @@
         <nav class="footer__menu">
           <ul class="menu__list">
             <li class="menu__item">
-              <a href="/works" class="menu__link">Мои работы</a>
+              <router-link to="/works" class="menu__link">Мои работы</router-link>
             </li>
             <li class="menu__item">
-              <a href="/about" class="menu__link">Обо мне</a>
+              <router-link to="/about" class="menu__link">Обо мне</router-link>
             </li>
             <li class="menu__item">
-              <a href="/blog" class="menu__link">Блог</a>
+              <router-link to="/blog" class="menu__link">Блог</router-link>
             </li>
             <li class="menu__item">
-              <a href="/welcome" class="menu__link">Авторизация</a>
+              <router-link to="/welcome" class="menu__link">Авторизация</router-link>
             </li>
           </ul>
         </nav>
@@ -569,10 +569,8 @@ export default {
     }
   }
   &__menu {
-
   }
   &__social {
-
   }
   &__text {
     font-family: Roboto, sans-serif;
@@ -601,7 +599,7 @@ export default {
   width: 40px;
   height: 35px;
   background: url("../assets/images/icons/hamburger.svg") no-repeat center /
-  contain;
+    contain;
 }
 .social {
   display: flex;
