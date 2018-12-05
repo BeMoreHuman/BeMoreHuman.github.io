@@ -1,58 +1,85 @@
 <template>
-    <div class="welcome">
-        <div class="auth-button__wrap">
-            <button class="auth-button" v-if="!isAuthShow" v-on:click="showAuth">Авторизоваться</button>
-        </div>
-        <div class="welcome-block">
-            <div class="welcome-block__photo"></div>
-            <h1 class="welcome-block__name">Александр Клименко</h1>
-            <p class="welcome-block__position">Личный сайт веб разработчика</p>
-            <div class="welcome-block__social">
-                <ul class="social">
-                    <li class="social__item">
-                        <a href="" class="social__link social__link--fb" aria-label="facebook" target="_blank"
-                           rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="17">
-                                <path d="M27.625 5.832c-3.031 4.031-3.359 3.656-.859 5.984 2.406 2.234 2.906 3.313 2.984 3.453 0 0 1 1.75-1.109 1.766l-4 .063c-.859.172-2-.609-2-.609-1.5-1.031-2.906-3.703-4-3.359 0 0-1.125.359-1.094 2.766.016.516-.234.797-.234.797s-.281.297-.828.344h-1.797c-3.953.25-7.438-3.391-7.438-3.391S3.437 9.707.093 1.848c-.219-.516.016-.766.016-.766S.343.785 1 .785L5.281.754c.406.063.688.281.688.281s.25.172.375.5c.703 1.75 1.609 3.344 1.609 3.344 1.563 3.219 2.625 3.766 3.234 3.438 0 0 .797-.484.625-4.375-.063-1.406-.453-2.047-.453-2.047-.359-.485-1.031-.625-1.328-.672-.234-.031.156-.594.672-.844.766-.375 2.125-.391 3.734-.375 1.266.016 1.625.094 2.109.203 1.484.359.984 1.734.984 5.047 0 1.063-.203 2.547.563 3.031.328.219 1.141.031 3.141-3.375 0 0 .938-1.625 1.672-3.516.125-.344.391-.484.391-.484s.25-.141.594-.094l4.5-.031c1.359-.172 1.578.453 1.578.453.234.641-.501 2.141-2.344 4.594z"/>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="social__item">
-                        <a href="" class="social__link social__link--gh" aria-label="github" target="_blank"
-                           rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="22">
-                                <path d="M25.047 17.422C22.984 21.594 17.313 22 13.25 22 9.125 22 3.109 21.641.969 17.422.172 15.844 0 13.984 0 12.25c0-2.281.625-4.438 2.125-6.188a8.585 8.585 0 0 1-.422-2.656c0-1.172.266-2.343.797-3.406 2.469 0 4.047 1.078 5.922 2.547A20.895 20.895 0 0 1 13.25 2c1.469 0 2.953.156 4.375.5C19.484 1.047 21.063 0 23.5 0a7.629 7.629 0 0 1 .797 3.406c0 .891-.141 1.781-.422 2.625C25.375 7.797 26 9.969 26 12.25c0 1.734-.172 3.578-.953 5.172zM18.5 10.5c-1.031 0-2.016.188-3.047.328-.812.125-1.625.172-2.453.172s-1.641-.047-2.453-.172c-1.016-.14-2.016-.328-3.047-.328-2.547 0-4 2.109-4 4.5 0 4.781 4.375 5.516 8.188 5.516h2.625c3.813 0 8.188-.734 8.188-5.516-.001-2.391-1.454-4.5-4.001-4.5zM8 18c-1.406 0-2-1.859-2-3s.594-3 2-3 2 1.859 2 3-.594 3-2 3zm10 0c-1.406 0-2-1.859-2-3s.594-3 2-3 2 1.859 2 3-.594 3-2 3z"/>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="social__item">
-                        <a href="" class="social__link social__link--lin" aria-label="linkedIn" target="_blank"
-                           rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22">
-                                <path d="M2.875 5.344h-.031C1.109 5.344 0 4.156 0 2.672 0 1.156 1.156 0 2.906 0c1.766 0 2.859 1.156 2.875 2.672.016 1.484-1.109 2.672-2.906 2.672zm2.578 17.594H.297V7.453h5.156v15.485zm18.547 0h-5.141v-8.281c0-2.078-.75-3.5-2.609-3.5-1.422 0-2.266.953-2.641 1.875-.125.344-.172.797-.172 1.266v8.641h-5.14c.063-14.031 0-15.484 0-15.484h5.141v2.25h-.031c.672-1.063 1.891-2.609 4.672-2.609 3.391 0 5.922 2.219 5.922 6.969v8.873z"/>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="welcome-block__menu">
-                <nav class="menu">
-                    <ul class="menu__list">
-                        <li class="menu__item">
-                            <router-link to="/" class="menu__link">Home</router-link>
-                        </li>
-                        <li class="menu__item">
-                            <router-link to="/about" class="menu__link">About</router-link>
-                        </li>
-                        <li class="menu__item">
-                            <router-link to="/welcome" class="menu__link">Welcome</router-link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <p class="welcome__description">© Александр Клименко | 2018</p>
+  <div class="welcome">
+    <div class="auth-button__wrap">
+      <button class="auth-button" v-if="!isAuthShow" v-on:click="showAuth">Авторизоваться</button>
     </div>
+    <div v-if="!isAuthShow" class="welcome-block">
+      <div class="welcome-block__photo"></div>
+      <h1 class="welcome-block__name">Александр Клименко</h1>
+      <p class="welcome-block__position">Личный сайт веб разработчика</p>
+      <div class="welcome-block__social">
+        <ul class="social">
+          <li class="social__item">
+            <a href="" class="social__link social__link--fb" aria-label="facebook" target="_blank"
+               rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="17">
+                <path d="M27.625 5.832c-3.031 4.031-3.359 3.656-.859 5.984 2.406 2.234 2.906 3.313 2.984 3.453 0 0 1 1.75-1.109 1.766l-4 .063c-.859.172-2-.609-2-.609-1.5-1.031-2.906-3.703-4-3.359 0 0-1.125.359-1.094 2.766.016.516-.234.797-.234.797s-.281.297-.828.344h-1.797c-3.953.25-7.438-3.391-7.438-3.391S3.437 9.707.093 1.848c-.219-.516.016-.766.016-.766S.343.785 1 .785L5.281.754c.406.063.688.281.688.281s.25.172.375.5c.703 1.75 1.609 3.344 1.609 3.344 1.563 3.219 2.625 3.766 3.234 3.438 0 0 .797-.484.625-4.375-.063-1.406-.453-2.047-.453-2.047-.359-.485-1.031-.625-1.328-.672-.234-.031.156-.594.672-.844.766-.375 2.125-.391 3.734-.375 1.266.016 1.625.094 2.109.203 1.484.359.984 1.734.984 5.047 0 1.063-.203 2.547.563 3.031.328.219 1.141.031 3.141-3.375 0 0 .938-1.625 1.672-3.516.125-.344.391-.484.391-.484s.25-.141.594-.094l4.5-.031c1.359-.172 1.578.453 1.578.453.234.641-.501 2.141-2.344 4.594z"/>
+              </svg>
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="" class="social__link social__link--gh" aria-label="github" target="_blank"
+               rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="22">
+                <path d="M25.047 17.422C22.984 21.594 17.313 22 13.25 22 9.125 22 3.109 21.641.969 17.422.172 15.844 0 13.984 0 12.25c0-2.281.625-4.438 2.125-6.188a8.585 8.585 0 0 1-.422-2.656c0-1.172.266-2.343.797-3.406 2.469 0 4.047 1.078 5.922 2.547A20.895 20.895 0 0 1 13.25 2c1.469 0 2.953.156 4.375.5C19.484 1.047 21.063 0 23.5 0a7.629 7.629 0 0 1 .797 3.406c0 .891-.141 1.781-.422 2.625C25.375 7.797 26 9.969 26 12.25c0 1.734-.172 3.578-.953 5.172zM18.5 10.5c-1.031 0-2.016.188-3.047.328-.812.125-1.625.172-2.453.172s-1.641-.047-2.453-.172c-1.016-.14-2.016-.328-3.047-.328-2.547 0-4 2.109-4 4.5 0 4.781 4.375 5.516 8.188 5.516h2.625c3.813 0 8.188-.734 8.188-5.516-.001-2.391-1.454-4.5-4.001-4.5zM8 18c-1.406 0-2-1.859-2-3s.594-3 2-3 2 1.859 2 3-.594 3-2 3zm10 0c-1.406 0-2-1.859-2-3s.594-3 2-3 2 1.859 2 3-.594 3-2 3z"/>
+              </svg>
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="" class="social__link social__link--lin" aria-label="linkedIn" target="_blank"
+               rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22">
+                <path d="M2.875 5.344h-.031C1.109 5.344 0 4.156 0 2.672 0 1.156 1.156 0 2.906 0c1.766 0 2.859 1.156 2.875 2.672.016 1.484-1.109 2.672-2.906 2.672zm2.578 17.594H.297V7.453h5.156v15.485zm18.547 0h-5.141v-8.281c0-2.078-.75-3.5-2.609-3.5-1.422 0-2.266.953-2.641 1.875-.125.344-.172.797-.172 1.266v8.641h-5.14c.063-14.031 0-15.484 0-15.484h5.141v2.25h-.031c.672-1.063 1.891-2.609 4.672-2.609 3.391 0 5.922 2.219 5.922 6.969v8.873z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="welcome-block__menu">
+        <nav class="menu">
+          <ul class="menu__list">
+            <li class="menu__item">
+              <router-link to="/" class="menu__link">Home</router-link>
+            </li>
+            <li class="menu__item">
+              <router-link to="/about" class="menu__link">About</router-link>
+            </li>
+            <li class="menu__item">
+              <router-link to="/welcome" class="menu__link">Welcome</router-link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div v-else class="welcome-block welcome-block--auth">
+      <form action="" class="form-auth">
+        <h2 class="form-auth__title">Авторизируйтесь</h2>
+        <label for="js-formAuthLogin" class="form-auth__label form-auth__label--input form-auth__label--login">
+          <input type="text" class="form-auth__input" id="js-formAuthLogin" name="login" placeholder="Логин">
+        </label>
+        <label for="js-formAuthPassword" class="form-auth__label form-auth__label--input form-auth__label--password">
+          <input type="password" class="form-auth__input" id="js-formAuthPassword" name="password" placeholder="Пароль">
+        </label>
+        <label for="js-formAuthHuman" class="form-auth__label form-auth__label--checkbox"> Я человек
+          <input type="checkbox" class="form-auth__checkbox"  id="js-formAuthHuman" name="isHuman">
+        </label>
+        <div class="form-auth__captcha">
+          <p class="form-auth__ques">Вы точно не робот?</p>
+          <label class="form-auth__label form-auth__label--radio"> Да
+            <input type="radio" class="form-auth__radio" name="robot">
+          </label>
+          <label class="form-auth__label form-auth__label--radio"> Не уверен
+            <input type="radio" class="form-auth__radio" name="robot">
+          </label>
+        </div>
+        <div class="form-auth__button-wrap">
+          <button class="form-auth__button form-auth__button--back" v-on:click.prevent="showAuth">На главную</button>
+          <button class="form-auth__button form-auth__button--login">Войти</button>
+        </div>
+      </form>
+    </div>
+    <p class="welcome__description">© Александр Клименко | 2018</p>
+  </div>
 </template>
 
 <script>
@@ -68,8 +95,6 @@ export default {
   methods: {
     showAuth: function() {
       this.isAuthShow = !this.isAuthShow;
-
-      //    create flip welcome-block
     }
   }
 };
@@ -100,6 +125,7 @@ export default {
     font-weight: 300;
     line-height: 1;
     color: #fff;
+    white-space: nowrap;
   }
 }
 .welcome-block {
@@ -109,6 +135,9 @@ export default {
 
   border-radius: 5px;
   background: rgba(252, 252, 252, 0.85);
+  &--auth {
+    padding: 0;
+  }
   &__photo {
     margin: 0 auto;
     width: 140px;
@@ -118,7 +147,7 @@ export default {
   }
   &__name {
     margin-top: 20px;
-    /*font-family: Roboto;*/
+    font-family: Roboto, sans-serif;
     font-size: 28px;
     font-weight: 500;
     line-height: 1;
@@ -126,7 +155,7 @@ export default {
   }
   &__position {
     margin-top: 10px;
-    /*font-family: Roboto;*/
+    font-family: Roboto, sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1;
@@ -137,6 +166,140 @@ export default {
   }
   &__menu {
     margin-top: 40px;
+  }
+}
+
+.form-auth {
+  position: relative;
+  padding: 30px 20px 45px;
+  width: 100%;
+  &__title {
+    position: relative;
+    text-align: center;
+
+    font-family: BERNIERRegular;
+    color: #455a64;
+    font-size: 35px;
+    line-height: 1;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 17px;
+
+      width: 22px;
+      height: 5px;
+
+      background: rgba(55, 62, 66, 0.2);
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      right: 15px;
+      top: 17px;
+
+      width: 22px;
+      height: 5px;
+
+      background: rgba(55, 62, 66, 0.2);
+    }
+  }
+  &__label {
+    &--input {
+      position: relative;
+      display: block;
+      margin-top: 20px;
+      padding-left: 45px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    &--login {
+      background: url("../assets/images/icons/login.svg") no-repeat 15px center /
+          15px 17px,
+        #f0efe9;
+    }
+    &--password {
+      background: url("../assets/images/icons/password.svg") no-repeat 15px
+          center / 18px 17px,
+        #f0efe9;
+    }
+    &--checkbox {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: Roboto, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1;
+      color: rgba(69, 90, 100, 0.8);
+    }
+    &--radio {
+      margin-right: 40px;
+      font-family: Roboto, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1;
+      color: rgba(69, 90, 100, 0.8);
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &__input {
+    padding: 14px 15px 13px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  &__captcha {
+    padding: 20px 0 40px;
+  }
+  &__ques {
+    padding-bottom: 10px;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(69, 90, 100, 0.8);
+  }
+  &__checkbox {
+    -webkit-appearance: checkbox;
+  }
+  &__radio {
+    margin-left: 10px;
+    -webkit-appearance: radio;
+  }
+  &__button {
+    &-wrap {
+      position: absolute;
+      display: flex;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    margin-right: 1px;
+    padding: 15px 20px 14px;
+    width: 100%;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    background: #00bfa5;
+    &:hover,
+    &:focus {
+      background: #009688;
+    }
+    &--back {
+      border-bottom-left-radius: 5px;
+    }
+    &--login {
+      border-bottom-right-radius: 5px;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
@@ -168,6 +331,7 @@ export default {
     outline: none;
   }
 }
+
 .social {
   display: flex;
   align-items: center;
@@ -213,7 +377,7 @@ export default {
     }
   }
   &__link {
-    padding: 14px 32px 17px;
+    padding: 14px 0 17px;
     width: 100%;
 
     font-size: 16px;
@@ -221,6 +385,29 @@ export default {
     line-height: 1;
     color: #fff;
     cursor: pointer;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .welcome-block {
+    min-width: initial;
+    width: 300px;
+    &__name {
+      font-size: 24px;
+    }
+  }
+  .auth-button {
+    &__wrap {
+      right: initial;
+    }
+  }
+  .form-auth {
+    &__title {
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
   }
 }
 </style>
