@@ -316,7 +316,7 @@ export default {
   border-radius: 5px;
   background: transparent;
 
-  /*font-family: Roboto;*/
+  font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
   line-height: 1;

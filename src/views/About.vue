@@ -34,81 +34,15 @@
       <article class="about-article about-article--right">
         <h3 class="about-article__subtitle">Чем я могу быть вам полезен</h3>
         <p class="about-article__text">Больше всего меня привлекает Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.</p>
-        <div class="about-article__skills">
-          <h4 class="skills__title">Frontend</h4>
+        <div v-for="item in qualification" class="about-article__skills">
+          <h4 class="skills__title">{{item.occupation}}</h4>
           <ul class="skills__list">
-            <li class="skills__item">
+            <li v-for="skill in item.skillList" class="skills__item">
               <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
                 <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle class="circle-90 circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)" style="transition-delay: 0s;"></circle>
+                <circle v-bind:class="'circle__' + skill.skillLevel" class="circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)"></circle>
               </svg>
-              <p class="skills__name">HTML</p>
-            </li>
-            <li class="skills__item">
-              <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
-                <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle class="circle-90 circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)" style="transition-delay: 0s;"></circle>
-              </svg>
-              <p class="skills__name">CSS</p>
-            </li>
-            <li class="skills__item">
-              <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
-                <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle class="circle-90 circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)" style="transition-delay: 0s;"></circle>
-              </svg>
-              <p class="skills__name">JavaScript</p>
-            </li>
-          </ul>
-        </div>
-        <div class="about-article__skills">
-          <h4 class="skills__title">Backend</h4>
-          <ul class="skills__list">
-            <li class="skills__item">
-              <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
-                <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle class="circle-90 circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)" style="transition-delay: 0s;"></circle>
-              </svg>
-              <p class="skills__name">Node.js & npm</p>
-            </li>
-            <li class="skills__item">
-              <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
-                <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle class="circle-90 circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)" style="transition-delay: 0s;"></circle>
-              </svg>
-              <p class="skills__name">mySQL</p>
-            </li>
-            <li class="skills__item">
-              <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
-                <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle class="circle-90 circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)" style="transition-delay: 0s;"></circle>
-              </svg>
-              <p class="skills__name">Ruby</p>
-            </li>
-          </ul>
-        </div>
-        <div class="about-article__skills">
-          <h4 class="skills__title">Workflow</h4>
-          <ul class="skills__list">
-            <li class="skills__item">
-              <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
-                <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle class="circle-90 circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)" style="transition-delay: 0s;"></circle>
-              </svg>
-              <p class="skills__name">Git</p>
-            </li>
-            <li class="skills__item">
-              <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
-                <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle class="circle-90 circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)" style="transition-delay: 0s;"></circle>
-              </svg>
-              <p class="skills__name">Gulp</p>
-            </li>
-            <li class="skills__item">
-              <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
-                <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle class="circle-90 circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)" style="transition-delay: 0s;"></circle>
-              </svg>
-              <p class="skills__name">Webpack</p>
+              <p class="skills__name">{{skill.skillTitle}}{{skill.skillLevel}}</p>
             </li>
           </ul>
         </div>
@@ -168,7 +102,61 @@ export default {
     SocialLinks
   },
   data: function() {
-    return {};
+    return {
+      qualification: [
+        {
+          occupation: "Frontend",
+          skillList: [
+            {
+              skillTitle: "HTML",
+              skillLevel: "80"
+            },
+            {
+              skillTitle: "CSS",
+              skillLevel: "80"
+            },
+            {
+              skillTitle: "JS",
+              skillLevel: "80"
+            }
+          ]
+        },
+        {
+          occupation: "Backend",
+          skillList: [
+            {
+              skillTitle: "Ruby",
+              skillLevel: "20"
+            },
+            {
+              skillTitle: "mySQL",
+              skillLevel: "20"
+            },
+            {
+              skillTitle: "Node.js",
+              skillLevel: "20"
+            }
+          ]
+        },
+        {
+          occupation: "Workflow",
+          skillList: [
+            {
+              skillTitle: "Git",
+              skillLevel: "50"
+            },
+            {
+              skillTitle: "Gulp",
+              skillLevel: "50"
+            },
+            {
+              skillTitle: "Webpack",
+              skillLevel: "50"
+            }
+          ]
+        }
+      ]
+    };
   },
   methods: {}
 };
@@ -494,8 +482,38 @@ export default {
   }
   &__second {
     stroke: #1bb696;
-    stroke-dasharray: 200;
+    stroke-dasharray: 0 282.6;
     stroke-opacity: 0.9;
+  }
+  &__10 {
+    stroke-dasharray: 28.26 282.6;
+  }
+  &__20 {
+    stroke-dasharray: 56.52 282.6;
+  }
+  &__30 {
+    stroke-dasharray: 84.78 282.6;
+  }
+  &__40 {
+    stroke-dasharray: 113.04 282.6;
+  }
+  &__50 {
+    stroke-dasharray: 141.3 282.6;
+  }
+  &__60 {
+    stroke-dasharray: 169.56 282.6;
+  }
+  &__70 {
+    stroke-dasharray: 197.82 282.6;
+  }
+  &__80 {
+    stroke-dasharray: 226.08 282.6;
+  }
+  &__90 {
+    stroke-dasharray: 254.34 282.6;
+  }
+  &__100 {
+    stroke-dasharray: 282.6 282.6;
   }
 }
 
@@ -573,5 +591,8 @@ export default {
       }
     }
   }
+}
+
+@media all and (max-width: 1799px) {
 }
 </style>

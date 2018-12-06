@@ -145,7 +145,6 @@ export default {
     &--active {
       font-weight: 500;
       color: #00bfa5;
-      
       border-right: 3px solid #00bfa5;
     }
   }
@@ -182,7 +181,7 @@ export default {
     }
   }
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;

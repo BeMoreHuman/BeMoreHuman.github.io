@@ -37,8 +37,16 @@ export default new Router({
     {
       path: "/blog",
       name: "blog",
+      component: () => import(/* webpackChunkName: "blog" */ "./views/Blog.vue")
+    },
+    {
+      path: "/practice",
+      name: "practice",
       component: () =>
-        import(/* webpackChunkName: "works" */ "./views/Blog.vue")
+        import(/* webpackChunkName: "practice" */ "./views/Practice.vue")
     }
   ]
+  // scrollBehavior(to, from, savedPosition) {
+  //   return { x: 0, y: 0 };
+  // }
 });
