@@ -4,15 +4,8 @@
       <div class="hero__social">
         <SocialLinks/>
       </div>
-      <div class="hero__menu">
-        <button class="menu-button" aria-label="open menu"></button>
-      </div>
-      <div class="hero-block">
-        <div class="hero-block__bg"></div>
-        <div class="hero-block__photo"></div>
-        <div class="hero-block__name">Александр Клименко</div>
-        <p class="hero-block__position">Личный сайт веб разработчика</p>
-      </div>
+      <MenuHeader/>
+      <HeroBlock/>
       <button class="hero__arrow-down" aria-label="scroll down"></button>
     </section>
     <section class="about-section">
@@ -23,9 +16,7 @@
       <article class="about-article about-article--left">
         <div class="about-article__block">
           <h2 class="about-article__title">Обо мне</h2>
-        </div>
-        <div class="about-article__block">
-          <div class="about-article__photo"></div>
+          <!--<div class="about-article__photo"></div>-->
           <h3 class="about-article__subtitle">Кто я</h3>
           <p class="about-article__text">Я веб разработчик  из Днепра. Мне 24 года. Я занимаюсь разработкой современныз сайтов и приложений. Мне нравится делать интересные и современные проекты.</p>
           <p class="about-article__text">Этот сайт я сделал в рамках обучения VueJS.</p>
@@ -34,18 +25,40 @@
       <article class="about-article about-article--right">
         <h3 class="about-article__subtitle">Чем я могу быть вам полезен</h3>
         <p class="about-article__text">Больше всего меня привлекает Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.</p>
-        <div v-for="item in qualification" class="about-article__skills">
-          <h4 class="skills__title">{{item.occupation}}</h4>
-          <ul class="skills__list">
-            <li v-for="skill in item.skillList" class="skills__item">
-              <svg class="skills__circle circle" viewBox="0 0 110 110" width="120" height="120">
-                <circle class="circle__first" r="45" cx="50%" cy="50%" fill="none"></circle>
-                <circle v-bind:class="'circle__' + skill.skillLevel" class="circle__second" r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)"></circle>
-              </svg>
-              <p class="skills__name">{{skill.skillTitle}}{{skill.skillLevel}}</p>
-            </li>
-          </ul>
-        </div>
+        <SkillList
+          skillsTitle="Frontend"
+          :skillsList="[
+            {
+              skillName: 'HTML',
+              skillLevel: '80'
+            },
+            {
+              skillName: 'CSS',
+              skillLevel: '80'
+            },
+            {
+              skillName: 'JS',
+              skillLevel: '80'
+            },
+          ]"
+        />
+        <SkillList
+            skillsTitle="Workflow"
+            :skillsList="[
+            {
+              skillName: 'Git',
+              skillLevel: '60'
+            },
+            {
+              skillName: 'Gulp',
+              skillLevel: '60'
+            },
+            {
+              skillName: 'Webpack',
+              skillLevel: '60'
+            },
+          ]"
+        />
       </article>
     </section>
     <section class="map-section">
@@ -57,106 +70,30 @@
         <p class="contact-block__text contact-block__text--add">г.Днепр, Украина</p>
       </div>
     </section>
-    <footer class="footer">
-      <div class="footer__row">
-        <nav class="footer__menu">
-          <ul class="menu__list">
-            <li class="menu__item">
-              <router-link to="/works" class="menu__link">Мои работы</router-link>
-            </li>
-            <li class="menu__item">
-              <router-link to="/about" class="menu__link">Обо мне</router-link>
-            </li>
-            <li class="menu__item">
-              <router-link to="/blog" class="menu__link">Блог</router-link>
-            </li>
-            <li class="menu__item">
-              <router-link to="/welcome" class="menu__link">Авторизация</router-link>
-            </li>
-          </ul>
-        </nav>
-        <div class="footer__social">
-          <SocialLinks/>
-        </div>
-      </div>
-      <div class="footer__row">
-        <p class="footer__text">
-          Я веб разработчик из Днепра.
-        </p>
-        <p class="footer__text">
-          Александр Клименко | создано в рамках обучения VueJS | 2018
-        </p>
-      </div>
-    </footer>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import SocialLinks from "@/components/SocialLinks.vue";
+import Footer from "@/components/Footer.vue";
+import HeroBlock from "@/components/HeroBlock.vue";
+import SkillList from "@/components/SkillList.vue";
+import MenuHeader from "@/components/MenuHeader.vue";
 
 /* eslint-disable no-console */
 
 export default {
   name: "About",
   components: {
-    SocialLinks
+    SocialLinks,
+    Footer,
+    HeroBlock,
+    SkillList,
+    MenuHeader
   },
   data: function() {
-    return {
-      qualification: [
-        {
-          occupation: "Frontend",
-          skillList: [
-            {
-              skillTitle: "HTML",
-              skillLevel: "80"
-            },
-            {
-              skillTitle: "CSS",
-              skillLevel: "80"
-            },
-            {
-              skillTitle: "JS",
-              skillLevel: "80"
-            }
-          ]
-        },
-        {
-          occupation: "Backend",
-          skillList: [
-            {
-              skillTitle: "Ruby",
-              skillLevel: "20"
-            },
-            {
-              skillTitle: "mySQL",
-              skillLevel: "20"
-            },
-            {
-              skillTitle: "Node.js",
-              skillLevel: "20"
-            }
-          ]
-        },
-        {
-          occupation: "Workflow",
-          skillList: [
-            {
-              skillTitle: "Git",
-              skillLevel: "50"
-            },
-            {
-              skillTitle: "Gulp",
-              skillLevel: "50"
-            },
-            {
-              skillTitle: "Webpack",
-              skillLevel: "50"
-            }
-          ]
-        }
-      ]
-    };
+    return {};
   },
   methods: {}
 };
@@ -197,12 +134,8 @@ export default {
   &--right {
     background: #eeebdf;
   }
-  &__block {
-    flex-basis: 50%;
-  }
   &__title {
     position: relative;
-    display: inline-block;
     padding: 60px 80px 20px;
     text-align: center;
 
@@ -216,7 +149,7 @@ export default {
     &:before {
       content: "";
       position: absolute;
-      left: 40px;
+      left: 80px;
       top: 90px;
 
       width: 22px;
@@ -227,7 +160,7 @@ export default {
     &:after {
       content: "";
       position: absolute;
-      right: 40px;
+      right: 90px;
       top: 90px;
 
       width: 22px;
@@ -283,10 +216,6 @@ export default {
     font-weight: 400;
     color: rgba(69, 90, 100, 0.8);
   }
-  &__skills {
-    padding-top: 40px;
-    text-align: left;
-  }
 }
 
 .hero-section {
@@ -314,47 +243,6 @@ export default {
     height: 16px;
     background: url("../assets/images/icons/arrow_down.svg") no-repeat center /
       contain;
-  }
-}
-.hero-block {
-  position: relative;
-  padding: 20px 0;
-  &__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("../assets/images/background_titles/portfolio_header.svg")
-      no-repeat center / contain;
-  }
-  &__photo {
-    position: relative;
-    margin: 0 auto;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: #ccc;
-  }
-  &__name {
-    position: relative;
-    margin-top: 20px;
-
-    font-family: Roboto, sans-serif;
-    font-size: 35px;
-    font-weight: 500;
-    line-height: 1;
-    color: #fff;
-  }
-  &__position {
-    position: relative;
-    margin-top: 10px;
-
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 1.4;
-    color: #fff;
   }
 }
 
@@ -438,159 +326,11 @@ export default {
   }
 }
 
-.skills {
-  &__title {
-    margin-bottom: 20px;
-
-    font-family: Roboto, sans-serif;
-    font-size: 28px;
-    font-weight: 500;
-    color: rgb(69, 90, 100);
-  }
-  &__list {
-    display: flex;
-  }
-  &__circle {
-    /*width: 100%;*/
-    /*height: 100%;*/
-  }
-  &__item {
-    position: relative;
-    margin-right: 40px;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-  &__name {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-
-    font-family: Roboto, sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: rgba(0, 191, 165, 1);
-  }
-}
-.circle {
-  fill: none;
-  stroke-width: 20;
-  &__first {
-    stroke: #dfdcd5;
-  }
-  &__second {
-    stroke: #1bb696;
-    stroke-dasharray: 0 282.6;
-    stroke-opacity: 0.9;
-  }
-  &__10 {
-    stroke-dasharray: 28.26 282.6;
-  }
-  &__20 {
-    stroke-dasharray: 56.52 282.6;
-  }
-  &__30 {
-    stroke-dasharray: 84.78 282.6;
-  }
-  &__40 {
-    stroke-dasharray: 113.04 282.6;
-  }
-  &__50 {
-    stroke-dasharray: 141.3 282.6;
-  }
-  &__60 {
-    stroke-dasharray: 169.56 282.6;
-  }
-  &__70 {
-    stroke-dasharray: 197.82 282.6;
-  }
-  &__80 {
-    stroke-dasharray: 226.08 282.6;
-  }
-  &__90 {
-    stroke-dasharray: 254.34 282.6;
-  }
-  &__100 {
-    stroke-dasharray: 282.6 282.6;
-  }
-}
-
-.footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 10;
-
-  color: #fff;
-  background: rgba(55, 62, 66, 0.85);
-  &__row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 30px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-  &__menu {
-  }
-  &__social {
-  }
-  &__text {
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-  }
-}
-
-.menu {
-  &__list {
-    display: flex;
-  }
-  &__item {
-    margin-right: 40px;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-  &__link {
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-  }
-}
 .menu-button {
   width: 40px;
   height: 35px;
   background: url("../assets/images/icons/hamburger.svg") no-repeat center /
     contain;
-}
-.social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &__item {
-    margin-left: 30px;
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-  &__link {
-    svg {
-      fill: rgba(255, 255, 255, 0.5);
-    }
-    &:hover,
-    &:focus {
-      outline: none;
-      svg {
-        fill: rgba(255, 255, 255, 1);
-      }
-    }
-  }
 }
 
 @media all and (max-width: 1799px) {

@@ -4,15 +4,8 @@
       <div class="hero__social">
         <SocialLinks/>
       </div>
-      <div class="hero__menu">
-        <button class="menu-button" aria-label="open menu"></button>
-      </div>
-      <div class="hero-block">
-        <div class="hero-block__bg"></div>
-        <div class="hero-block__photo"></div>
-        <div class="hero-block__name">Александр Клименко</div>
-        <p class="hero-block__position">Личный сайт веб разработчика</p>
-      </div>
+      <MenuHeader/>
+      <HeroBlock/>
       <button class="hero__arrow-down" aria-label="scroll down"></button>
     </section>
     <section class="works-section">
@@ -77,52 +70,75 @@
         </form>
       </div>
     </section>
-    <footer class="footer">
-      <div class="footer__row">
-        <nav class="footer__menu">
-          <ul class="menu__list">
-            <li class="menu__item">
-              <router-link to="/works" class="menu__link">Мои работы</router-link>
-            </li>
-            <li class="menu__item">
-              <router-link to="/about" class="menu__link">Обо мне</router-link>
-            </li>
-            <li class="menu__item">
-              <router-link to="/blog" class="menu__link">Блог</router-link>
-            </li>
-            <li class="menu__item">
-              <router-link to="/welcome" class="menu__link">Авторизация</router-link>
-            </li>
-          </ul>
-        </nav>
-        <div class="footer__social">
-          <SocialLinks/>
-        </div>
-      </div>
-      <div class="footer__row">
-        <p class="footer__text">
-          Я веб разработчик из Днепра.
-        </p>
-        <p class="footer__text">
-          Александр Клименко | создано в рамках обучения VueJS | 2018
-        </p>
-      </div>
-    </footer>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import SocialLinks from "@/components/SocialLinks.vue";
+import Footer from "@/components/Footer.vue";
+import HeroBlock from "@/components/HeroBlock.vue";
+import MenuHeader from "@/components/MenuHeader.vue";
 
 export default {
   name: "Works",
   components: {
-    SocialLinks
+    SocialLinks,
+    Footer,
+    HeroBlock,
+    MenuHeader
   }
 };
 </script>
 
 <style scoped lang="scss">
+.hero-section {
+  position: relative;
+  padding-top: 150px;
+  height: 790px;
+
+  background: url("../assets/images/background_images/about_bg.jpg") no-repeat
+    center / cover;
+}
+.hero {
+  &__social {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+  &__menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+  &__arrow-down {
+    margin-top: 130px;
+    width: 26px;
+    height: 16px;
+    background: url("../assets/images/icons/arrow_down.svg") no-repeat center /
+      contain;
+  }
+}
+
+.works-section {
+  position: relative;
+  margin-top: -100px;
+  &__triangles {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-99%);
+    fill: #fff;
+    width: 100%;
+    .left {
+      fill: #faf8f0;
+    }
+    .right {
+      fill: #faf8f0;
+    }
+  }
+}
 .works {
   position: relative;
   &__title {
@@ -177,7 +193,6 @@ export default {
     background: #efebe0;
   }
 }
-
 .work {
   grid-area: work;
 
@@ -298,33 +313,6 @@ export default {
   }
 }
 
-.hero-section {
-  position: relative;
-  padding-top: 150px;
-  height: 790px;
-
-  background: url("../assets/images/background_images/about_bg.jpg") no-repeat
-    center / cover;
-}
-.works-section {
-  position: relative;
-  margin-top: -100px;
-  &__triangles {
-    z-index: 1;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translateY(-99%);
-    fill: #fff;
-    width: 100%;
-    .left {
-      fill: #faf8f0;
-    }
-    .right {
-      fill: #faf8f0;
-    }
-  }
-}
 .about-section {
   position: relative;
   padding-bottom: 250px;
@@ -378,6 +366,7 @@ export default {
     margin-top: 70px;
   }
 }
+
 .form-contact {
   position: relative;
   display: flex;
@@ -531,138 +520,11 @@ export default {
     color: #20b5a1;
   }
 }
-.hero {
-  &__social {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-  }
-  &__menu {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-  }
-  &__arrow-down {
-    margin-top: 130px;
-    width: 26px;
-    height: 16px;
-    background: url("../assets/images/icons/arrow_down.svg") no-repeat center /
-      contain;
-  }
-}
-.hero-block {
-  position: relative;
-  padding: 20px 0;
-  &__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("../assets/images/background_titles/portfolio_header.svg")
-      no-repeat center / contain;
-  }
-  &__photo {
-    position: relative;
-    margin: 0 auto;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: #ccc;
-  }
-  &__name {
-    position: relative;
-    margin-top: 20px;
 
-    font-family: Roboto, sans-serif;
-    font-size: 35px;
-    font-weight: 500;
-    line-height: 1;
-    color: #fff;
-  }
-  &__position {
-    position: relative;
-    margin-top: 10px;
-
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 1.4;
-    color: #fff;
-  }
-}
 .menu-button {
   width: 40px;
   height: 35px;
   background: url("../assets/images/icons/hamburger.svg") no-repeat center /
     contain;
-}
-.social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &__item {
-    margin-left: 30px;
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-  &__link {
-    svg {
-      fill: rgba(255, 255, 255, 0.5);
-    }
-    &:hover,
-    &:focus {
-      outline: none;
-      svg {
-        fill: rgba(255, 255, 255, 1);
-      }
-    }
-  }
-}
-.footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 10;
-
-  color: #fff;
-  background: rgba(55, 62, 66, 0.85);
-  &__row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 30px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-  &__menu {
-  }
-  &__social {
-  }
-  &__text {
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-  }
-}
-.menu {
-  &__list {
-    display: flex;
-  }
-  &__item {
-    margin-right: 40px;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-  &__link {
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-  }
 }
 </style>

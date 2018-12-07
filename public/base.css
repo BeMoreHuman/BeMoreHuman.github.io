@@ -59,3 +59,7 @@ button {
 button:disabled {
     cursor: not-allowed;
 }
+
+.page-body.menuOpened {
+    overflow: hidden;
+}
