@@ -30,12 +30,12 @@
           <img src="../assets/images/works_img/work_preview.png" alt="work preview" class="work__img">
         </div>
         <div class="work__thumb work__thumb--first">
-          <img src="../assets/images/works_img/work_preview.png" alt="work thumb" class="work__thumb-img">
+          <img src="../assets/images/works_img/work_thumb1.jpg" alt="work thumb" class="work__thumb-img">
           <button class="work__thumb-btn" aria-label="slide works"></button>
         </div>
         <div class="work__thumb work__thumb--second">
-          <img src="../assets/images/works_img/work_preview.png" alt="work thumb" class="work__thumb-img">
-          <button class="work__thumb-btn" aria-label="slide works"></button>
+          <img src="../assets/images/works_img/work_thumb2.jpg" alt="work thumb" class="work__thumb-img">
+          <button class="work__thumb-btn" aria-label="slide works" v-on:click="slideUp"></button>
         </div>
       </div>
     </section>
@@ -75,6 +75,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import SocialLinks from "@/components/SocialLinks.vue";
 import Footer from "@/components/Footer.vue";
 import HeroBlock from "@/components/HeroBlock.vue";
@@ -87,6 +88,21 @@ export default {
     Footer,
     HeroBlock,
     MenuHeader
+  },
+  methods: {
+    slideUp: function() {
+      let previewImg = document.body.querySelector('.work__img'),
+        thumbPrev = document.body.querySelector('.work__thumb--first .work__thumb-img'),
+        thumbNext = document.body.querySelector('.work__thumb--second .work__thumb-img');
+
+      let newPreviewImg = thumbNext.src,
+        newThumbPrev = previewImg.src,
+        newThumbNext = thumbPrev.src;
+
+      previewImg.src = newPreviewImg;
+      thumbPrev.src = newThumbPrev;
+      thumbNext.src = newThumbNext;
+    }
   }
 };
 </script>
@@ -282,7 +298,7 @@ export default {
     &--second {
       grid-area: thumb2;
       .work__thumb-btn {
-        background-image: url("../assets/images/icons/portf_arrow_down.svg");
+        background-image: url("../assets/images/icons/portf_arrow_up.svg");
       }
     }
     &-img {

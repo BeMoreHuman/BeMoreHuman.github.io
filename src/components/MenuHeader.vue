@@ -12,16 +12,16 @@
     <nav class="menu__nav">
       <ul class="menu__list">
         <li class="menu__item">
-          <router-link to="/works" class="menu__link">Мои работы</router-link>
+          <router-link to="/works" class="menu__link" v-on:click.native="removeOpenedMenuClass">Мои работы</router-link>
         </li>
         <li class="menu__item">
-          <router-link to="/blog" class="menu__link">Блог</router-link>
+          <router-link to="/blog" class="menu__link" v-on:click.native="removeOpenedMenuClass">Блог</router-link>
         </li>
         <li class="menu__item">
-          <router-link to="/about" class="menu__link">Обо мне</router-link>
+          <router-link to="/about" class="menu__link" v-on:click.native="removeOpenedMenuClass">Обо мне</router-link>
         </li>
         <li class="menu__item">
-          <router-link to="/welcome" class="menu__link">Авторизация</router-link>
+          <router-link to="/welcome" class="menu__link" v-on:click.native="removeOpenedMenuClass">Авторизация</router-link>
         </li>
       </ul>
     </nav>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 export default {
   name: "MenuHeader",
   bodyClass: "",
@@ -39,6 +40,11 @@ export default {
 
       menu.classList.toggle("menu--active");
       pageBody.classList.toggle("menuOpened");
+    },
+    removeOpenedMenuClass: function() {
+      let pageBody = document.querySelector(".page-body");
+
+      pageBody.classList.remove("menuOpened");
     }
   }
 };
@@ -109,10 +115,9 @@ export default {
     }
   }
   &__nav {
-    display: flex;
+    display: none;
     justify-content: center;
     padding-top: 100px;
-    opacity: 0;
   }
   &__list {
   }
@@ -156,7 +161,7 @@ export default {
     z-index: 10;
     background: rgba($accent-color, 0.9);
     .menu__nav {
-      opacity: 1;
+      display: flex;
     }
     .menu__button {
       background-image: url("../assets/images/icons/close_menu.svg");

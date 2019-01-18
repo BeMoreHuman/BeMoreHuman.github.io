@@ -39,13 +39,13 @@
         <nav class="menu">
           <ul class="menu__list">
             <li class="menu__item">
-              <router-link to="/" class="menu__link">Home</router-link>
+              <router-link to="/works" class="menu__link">My works</router-link>
             </li>
             <li class="menu__item">
               <router-link to="/about" class="menu__link">About</router-link>
             </li>
             <li class="menu__item">
-              <router-link to="/welcome" class="menu__link">Welcome</router-link>
+              <router-link to="/blog" class="menu__link">Blog</router-link>
             </li>
           </ul>
         </nav>
@@ -73,8 +73,8 @@
           </label>
         </div>
         <div class="form-auth__button-wrap">
-          <button class="form-auth__button form-auth__button--back" v-on:click.prevent="showAuth">На главную</button>
-          <button class="form-auth__button form-auth__button--login">Войти</button>
+          <button class="form-auth__button form-auth__button--back" v-on:click.prevent="showAuth">Back</button>
+          <button class="form-auth__button form-auth__button--login" v-on:click.prevent>Log in</button>
         </div>
       </form>
     </div>
@@ -407,6 +407,23 @@ export default {
       &:after {
         display: none;
       }
+    }
+  }
+  @media all and (orientation: landscape) {
+    .welcome {
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      padding: 100px 0;
+      min-height: 100vh;
+      height: auto;
+    }
+    .auth-button__wrap {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .welcome-block {
+      margin: 0 auto;
     }
   }
 }
