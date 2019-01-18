@@ -570,6 +570,9 @@ export default {
         "thumb1 thumb2";
     grid-column-gap: 0;
   }
+  .work {
+    padding: 20px 0;
+  }
   .work__preview {
     padding: 20px;
   }
