@@ -54,5 +54,13 @@ export default {
     line-height: 1.4;
     color: #fff;
   }
+  @media all and (max-width: 767px) {
+    &__bg {
+      background: none;
+    }
+    &__name {
+      font-size: 24px;
+    }
+  }
 }
 </style>

@@ -543,4 +543,85 @@ export default {
   background: url("../assets/images/icons/hamburger.svg") no-repeat center /
     contain;
 }
+
+@media all and (max-width: 767px) {
+  .hero-section {
+    padding-top: 100px;
+    height: 90vh;
+  }
+  .works__title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 36px;
+    &:before,
+    &:after {
+      top: 50px;
+    }
+  }
+  .works-section__triangles {
+    height: 30px;
+  }
+  .works__container {
+    grid-auto-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-template-areas:
+        "work work"
+        "preview preview"
+        "thumb1 thumb2";
+    grid-column-gap: 0;
+  }
+  .work__preview {
+    padding: 20px;
+  }
+  .work__img {
+    width: 280px;
+    height: 220px;
+  }
+  .work__thumb-img {
+    width: 120px;
+    height: 60px;
+  }
+  .work__thumb-btn {
+    transform: translate(-50%, -75%);
+  }
+  .about__title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 36px;
+    &:before,
+    &:after {
+      top: 50px;
+    }
+  }
+  .testimonials__container {
+    display: block;
+    padding: 0 10px;
+  }
+  .testimonials__block {
+    margin: 25px 0 0;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .testimonials__text {
+    margin-bottom: 10px;
+  }
+  .testimonials__icon {
+    margin: 0 auto 20px;
+  }
+  .testimonials__author {
+    margin-right: 15px;
+    width: 55px;
+    height: 55px;
+  }
+  .testimonials__name {
+    max-width: 220px;
+  }
+  .form-contact {
+    width: 300px;
+  }
+  .form-contact__title {
+    font-size: 24px;
+  }
+}
 </style>

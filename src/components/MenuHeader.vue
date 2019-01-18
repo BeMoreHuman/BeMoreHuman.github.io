@@ -203,5 +203,44 @@ export default {
       }
     }
   }
+  @media all and (max-width: 767px) {
+    &__btn {
+      width: 50px;
+      height: 32px;
+    }
+    &__btn span {
+      height: 4px;
+      &:nth-child(3),
+      &:nth-child(4) {
+        top: 13px;
+      }
+      &:nth-child(5),
+      &:nth-child(6) {
+        top: 26px;
+      }
+    }
+    &--active .menu__btn span {
+      &:nth-child(5) {
+        left: 5px;
+        top: 22px;
+      }
+      &:nth-child(6) {
+        left: calc(50% - 5px);
+        top: 22px;
+      }
+    }
+    &__item {
+      margin-bottom: 35px;
+    }
+    &__link {
+      padding-left: 45px;
+      padding-right: 45px;
+      font-size: 36px;
+      &:before,
+      &:after {
+        top: 15px;
+      }
+    }
+  }
 }
 </style>

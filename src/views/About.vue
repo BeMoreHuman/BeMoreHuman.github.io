@@ -335,4 +335,57 @@ export default {
 
 @media all and (max-width: 1799px) {
 }
+@media all and (max-width: 767px) {
+  .hero-section {
+    padding-top: 100px;
+    height: 90vh;
+  }
+  .about-section {
+    display: block;
+  }
+  .about-article {
+    padding: 0 30px;
+  }
+  .about-article__title {
+    padding: 20px 30px;
+    font-size: 36px;
+    &:before {
+      top: 35px;
+      left: 30px;
+    }
+    &:after {
+      top: 35px;
+      right: 30px;
+    }
+  }
+  .about-section__triangles {
+    height: 30px;
+  }
+  .about-article__subtitle {
+    padding: 20px;
+    font-size: 24px;
+    &:before {
+      top: 30px;
+      left: -20px;
+    }
+    &:after {
+      top: 30px;
+      right: -20px;
+    }
+  }
+  .map-section {
+    padding-bottom: 205px;
+    min-height: 750px;
+  }
+  .contact-block {
+    padding: 20px;
+  }
+  .contact-block__title {
+    font-size: 24px;
+    &:before,
+    &:after {
+      top: 10px;
+    }
+  }
+}
 </style>

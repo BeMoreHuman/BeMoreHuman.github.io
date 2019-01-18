@@ -88,4 +88,26 @@ export default {
     font-weight: 500;
   }
 }
+@media all and (max-width: 767px) {
+  .footer {
+    &__row {
+      display: block;
+    }
+    &__social {
+      margin-top: 20px;
+    }
+    &__text {
+      margin-top: 5px;
+    }
+  }
+  .menu__list {
+    justify-content: space-between;
+  }
+  .menu__item {
+    margin-right: 0;
+  }
+  .menu__link {
+    font-size: 12px;
+  }
+}
 </style>

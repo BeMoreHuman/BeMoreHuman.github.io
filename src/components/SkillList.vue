@@ -77,5 +77,20 @@ export default {
       }
     }
   }
+  @media all and (max-width: 767px) {
+    padding-top: 20px;
+    text-align: center;
+    &__list {
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    &__item {
+      margin: 10px;
+    }
+    &__circle {
+      width: 110px;
+      height: 110px;
+    }
+  }
 }
 </style>
