@@ -68,5 +68,14 @@ export default {
       height: 0;
     }
   }
+  @media all and (max-width: 767px) {
+    padding: 40px 0;
+    &__title {
+      font-size: 24px;
+    }
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
 }
 </style>

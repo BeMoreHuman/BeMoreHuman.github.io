@@ -195,4 +195,36 @@ export default {
     }
   }
 }
+@media all and (max-width: 767px) {
+  .hero-section {
+    padding-top: 100px;
+    padding-bottom: 0;
+    min-height: auto;
+    height: 90vh;
+  }
+  .hero-block {
+    padding: 0;
+  }
+  .blog-section__triangles {
+    height: 30px;
+  }
+  .blog__container {
+    display: block;
+    padding: 20px;
+    max-width: 100%;
+  }
+  .blog-aside {
+    display: none;
+  }
+  .blog__wrapper {
+    padding-left: 0;
+    max-width: 100%;
+  }
+  .blog {
+    padding-bottom: 0;
+  }
+  .blog-section {
+    padding-bottom: 205px;
+  }
+}
 </style>
