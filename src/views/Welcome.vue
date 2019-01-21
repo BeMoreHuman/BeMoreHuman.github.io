@@ -1,13 +1,10 @@
 <template>
   <div class="welcome">
-    <div class="auth-button__wrap">
-      <button class="auth-button" v-if="!isAuthShow" v-on:click="showAuth">Авторизоваться</button>
-    </div>
-    <div v-if="!isAuthShow" class="welcome-block">
-      <div class="welcome-block__photo"></div>
-      <h1 class="welcome-block__name">Александр Клименко</h1>
-      <p class="welcome-block__position">Личный сайт веб разработчика</p>
-      <div class="welcome-block__social">
+    <div class="welcome-card">
+      <div class="welcome-card__photo"></div>
+      <h1 class="welcome-card__name">Александр Клименко</h1>
+      <p class="welcome-card__position">Личный сайт веб разработчика</p>
+      <div class="welcome-card__social">
         <ul class="social">
           <li class="social__item">
             <a href="" class="social__link social__link--fb" aria-label="facebook" target="_blank"
@@ -35,70 +32,25 @@
           </li>
         </ul>
       </div>
-      <div class="welcome-block__menu">
+      <div class="welcome-card__menu">
         <nav class="menu">
           <ul class="menu__list">
             <li class="menu__item">
-              <router-link to="/works" class="menu__link">My works</router-link>
+              <router-link to="/works" class="menu__link">Мои работы</router-link>
             </li>
             <li class="menu__item">
-              <router-link to="/about" class="menu__link">About</router-link>
+              <router-link to="/about" class="menu__link">Обо мне</router-link>
             </li>
             <li class="menu__item">
-              <router-link to="/blog" class="menu__link">Blog</router-link>
+              <router-link to="/blog" class="menu__link">Блог</router-link>
             </li>
           </ul>
         </nav>
       </div>
     </div>
-    <div v-else class="welcome-block welcome-block--auth">
-      <form action="" class="form-auth">
-        <h2 class="form-auth__title">Авторизируйтесь</h2>
-        <label for="js-formAuthLogin" class="form-auth__label form-auth__label--input form-auth__label--login">
-          <input type="text" class="form-auth__input" id="js-formAuthLogin" name="login" placeholder="Логин">
-        </label>
-        <label for="js-formAuthPassword" class="form-auth__label form-auth__label--input form-auth__label--password">
-          <input type="password" class="form-auth__input" id="js-formAuthPassword" name="password" placeholder="Пароль">
-        </label>
-        <label for="js-formAuthHuman" class="form-auth__label form-auth__label--checkbox"> Я человек
-          <input type="checkbox" class="form-auth__checkbox"  id="js-formAuthHuman" name="isHuman">
-        </label>
-        <div class="form-auth__captcha">
-          <p class="form-auth__ques">Вы точно не робот?</p>
-          <label class="form-auth__label form-auth__label--radio"> Да
-            <input type="radio" class="form-auth__radio" name="robot">
-          </label>
-          <label class="form-auth__label form-auth__label--radio"> Не уверен
-            <input type="radio" class="form-auth__radio" name="robot">
-          </label>
-        </div>
-        <div class="form-auth__button-wrap">
-          <button class="form-auth__button form-auth__button--back" v-on:click.prevent="showAuth">Back</button>
-          <button class="form-auth__button form-auth__button--login" v-on:click.prevent>Log in</button>
-        </div>
-      </form>
-    </div>
     <p class="welcome__description">© Александр Клименко | 2018</p>
   </div>
 </template>
-
-<script>
-/* eslint-disable no-console */
-
-export default {
-  name: "Welcome",
-  data: function() {
-    return {
-      isAuthShow: false
-    };
-  },
-  methods: {
-    showAuth: function() {
-      this.isAuthShow = !this.isAuthShow;
-    }
-  }
-};
-</script>
 
 <style scoped lang="scss">
 .welcome {
@@ -128,22 +80,20 @@ export default {
     white-space: nowrap;
   }
 }
-.welcome-block {
+.welcome-card {
   padding: 40px 0 0;
   min-width: 380px;
   text-align: center;
 
   border-radius: 5px;
   background: rgba(252, 252, 252, 0.85);
-  &--auth {
-    padding: 0;
-  }
   &__photo {
     margin: 0 auto;
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    background: #ccc;
+    background: url("../assets/images/selfie.jpg") no-repeat
+    center / cover;
   }
   &__name {
     margin-top: 20px;
@@ -151,7 +101,7 @@ export default {
     font-size: 28px;
     font-weight: 500;
     line-height: 1;
-    color: #455a64;
+    color: $title-color;
   }
   &__position {
     margin-top: 10px;
@@ -159,7 +109,7 @@ export default {
     font-size: 16px;
     font-weight: 400;
     line-height: 1;
-    color: #455a64;
+    color: $title-color;
   }
   &__social {
     margin-top: 35px;
@@ -168,170 +118,6 @@ export default {
     margin-top: 40px;
   }
 }
-
-.form-auth {
-  position: relative;
-  padding: 30px 20px 45px;
-  width: 100%;
-  &__title {
-    position: relative;
-    text-align: center;
-
-    font-family: BERNIERRegular;
-    color: #455a64;
-    font-size: 35px;
-    line-height: 1;
-    &:before {
-      content: "";
-      position: absolute;
-      left: 15px;
-      top: 17px;
-
-      width: 22px;
-      height: 5px;
-
-      background: rgba(55, 62, 66, 0.2);
-    }
-    &:after {
-      content: "";
-      position: absolute;
-      right: 15px;
-      top: 17px;
-
-      width: 22px;
-      height: 5px;
-
-      background: rgba(55, 62, 66, 0.2);
-    }
-  }
-  &__label {
-    &--input {
-      position: relative;
-      display: block;
-      margin-top: 20px;
-      padding-left: 45px;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-    }
-    &--login {
-      background: url("../assets/images/icons/login.svg") no-repeat 15px center /
-          15px 17px,
-        #f0efe9;
-    }
-    &--password {
-      background: url("../assets/images/icons/password.svg") no-repeat 15px
-          center / 18px 17px,
-        #f0efe9;
-    }
-    &--checkbox {
-      display: inline-block;
-      margin-top: 20px;
-      font-family: Roboto, sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1;
-      color: rgba(69, 90, 100, 0.8);
-    }
-    &--radio {
-      margin-right: 40px;
-      font-family: Roboto, sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1;
-      color: rgba(69, 90, 100, 0.8);
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-  &__input {
-    padding: 14px 15px 13px;
-    width: 100%;
-    font-size: 16px;
-    line-height: 1;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-  &__captcha {
-    padding: 20px 0 40px;
-  }
-  &__ques {
-    padding-bottom: 10px;
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1;
-    color: rgba(69, 90, 100, 0.8);
-  }
-  &__checkbox {
-    -webkit-appearance: checkbox;
-  }
-  &__radio {
-    margin-left: 10px;
-    -webkit-appearance: radio;
-  }
-  &__button {
-    &-wrap {
-      position: absolute;
-      display: flex;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-    }
-
-    margin-right: 1px;
-    padding: 15px 20px 14px;
-    width: 100%;
-    font-family: Roboto, sans-serif;
-    font-weight: 500;
-    line-height: 1;
-    color: #fff;
-    background: #00bfa5;
-    &:hover,
-    &:focus {
-      background: #009688;
-    }
-    &--back {
-      border-bottom-left-radius: 5px;
-    }
-    &--login {
-      border-bottom-right-radius: 5px;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-
-.auth-button {
-  &__wrap {
-    position: absolute;
-    top: 30px;
-    right: 100px;
-  }
-  padding: 15px 30px 14px;
-  text-align: center;
-
-  border: 1px solid #fff;
-  border-radius: 5px;
-  background: transparent;
-
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1;
-  color: #fff;
-  cursor: pointer;
-  &:hover,
-  &:focus {
-    background: #fff;
-    color: #00bfa5;
-  }
-  &:focus {
-    outline: none;
-  }
-}
-
 .social {
   display: flex;
   align-items: center;
@@ -344,13 +130,13 @@ export default {
   }
   &__link {
     svg {
-      fill: rgba(0, 191, 165, 0.5);
+      fill: rgba($accent-color, 0.5);
     }
     &:hover,
     &:focus {
       outline: none;
       svg {
-        fill: rgba(0, 191, 165, 1);
+        fill: rgba($accent-color, 1);
       }
     }
   }
@@ -364,7 +150,7 @@ export default {
     margin-left: 1px;
     width: 100%;
 
-    background-color: #00bfa5;
+    background-color: $accent-color;
     &:first-child {
       margin-left: 0;
       border-bottom-left-radius: 5px;
@@ -373,7 +159,7 @@ export default {
       border-bottom-right-radius: 5px;
     }
     &:hover {
-      background-color: #009688;
+      background-color: $accent-hover-color;
     }
   }
   &__link {
@@ -388,43 +174,33 @@ export default {
   }
 }
 
-@media all and (max-width: 767px) {
-  .welcome-block {
+@media all and (max-width: 960px) and (orientation: landscape) {
+  .welcome {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    padding: 100px 0;
+    min-height: 100vh;
+    height: auto;
+  }
+  .welcome-card {
+    margin: 0 auto;
+    width: 380px;
+  }
+}
+@media all and (max-width: 400px) {
+  .welcome {
+    padding: 0 20px;
+  }
+  .welcome-card {
     min-width: initial;
-    width: 300px;
+    width: 100%;
     &__name {
       font-size: 24px;
     }
   }
-  .auth-button {
-    &__wrap {
-      right: initial;
-    }
-  }
-  .form-auth {
-    &__title {
-      &:before,
-      &:after {
-        display: none;
-      }
-    }
-  }
-  @media all and (orientation: landscape) {
-    .welcome {
-      position: relative;
-      display: block;
-      margin: 0 auto;
-      padding: 100px 0;
-      min-height: 100vh;
-      height: auto;
-    }
-    .auth-button__wrap {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .welcome-block {
-      margin: 0 auto;
-    }
+  .menu__link {
+    font-size: 14px;
   }
 }
 </style>
