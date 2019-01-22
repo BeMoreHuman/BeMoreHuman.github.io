@@ -1,14 +1,14 @@
 <template>
   <div class="blog">
-    <section class="hero-section">
-      <div class="hero__social">
+    <section class="blog__section">
+      <div class="blog__social">
         <SocialLinks/>
       </div>
       <MenuHeader/>
-      <div class="hero-block">
-        <div class="hero-block__photo"></div>
-        <div class="hero-block__title">Блог</div>
-        <p class="hero-block__desc">Статьи, которые я написал</p>
+      <div class="blog-hero">
+        <div class="blog-hero__photo"></div>
+        <div class="blog-hero__title">Блог</div>
+        <p class="blog-hero__desc">Статьи, которые я написал</p>
       </div>
     </section>
     <section class="blog-section">
@@ -68,25 +68,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.hero-section {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 40px 0;
-  min-height: 650px;
-
-  background: url("../assets/images/background_images/about_bg.jpg") no-repeat
-    center / cover;
-}
-.hero {
-  &__social {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-  }
-}
-.hero-block {
+.blog-hero {
   position: relative;
   padding: 140px 40px 40px;
   background: url("../assets/images/background_titles/blog_header.svg")
@@ -142,7 +124,6 @@ export default {
     color: #fff;
   }
 }
-
 .blog-section {
   position: relative;
   margin-top: -80px;
@@ -161,6 +142,22 @@ export default {
 .blog {
   position: relative;
   padding-bottom: 109px;
+  &__social {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+  &__section {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 0;
+    min-height: 650px;
+
+    background: url("../assets/images/background_images/about_bg.jpg") no-repeat
+    center / cover;
+  }
   &__container {
     display: flex;
     margin: 0 auto;
@@ -196,35 +193,32 @@ export default {
   }
 }
 @media all and (max-width: 767px) {
-  .hero-section {
-    padding-top: 100px;
-    padding-bottom: 0;
-    min-height: auto;
-    height: 90vh;
-  }
-  .hero-block {
+  .blog-hero {
     padding: 0;
   }
-  .blog-section__triangles {
-    height: 30px;
-  }
-  .blog__container {
-    display: block;
-    padding: 20px;
-    max-width: 100%;
-  }
-  .blog-aside {
-    display: none;
-  }
-  .blog__wrapper {
-    padding-left: 0;
-    max-width: 100%;
+  .blog-section {
+    padding-top: 100px;
+    padding-bottom: 205px;
+    min-height: auto;
+    height: 90vh;
+    &__triangles {
+      height: 30px;
+    }
   }
   .blog {
     padding-bottom: 0;
+    &__container {
+      display: block;
+      padding: 20px;
+      max-width: 100%;
+    }
+    &__wrapper {
+      padding-left: 0;
+      max-width: 100%;
+    }
   }
-  .blog-section {
-    padding-bottom: 205px;
+  .blog-aside {
+    display: none;
   }
 }
 </style>
