@@ -19,9 +19,9 @@
       <div class="works__container">
         <div class="work">
           <div class="work__block">
-            <h3 class="work__title">Работа первая</h3>
+            <h3 class="work__title">{{works[0].title}}</h3>
             <p class="work__skills">
-              html, css, javascript
+              {{works[0].skills}}
             </p>
             <button class="work__button">Посмотреть сайт</button>
           </div>
@@ -31,7 +31,7 @@
         </div>
         <div class="work__thumb work__thumb--first">
           <img src="../assets/images/works_img/work_thumb1.jpg" alt="work thumb" class="work__thumb-img">
-          <button class="work__thumb-btn" aria-label="slide works"></button>
+          <button class="work__thumb-btn" aria-label="slide works" v-on:click="slideDown"></button>
         </div>
         <div class="work__thumb work__thumb--second">
           <img src="../assets/images/works_img/work_thumb2.jpg" alt="work thumb" class="work__thumb-img">
@@ -58,14 +58,14 @@
         </div>
       </div>
       <div class="about__contact">
-        <form action="" class="form-contact">
+        <form action="https://formspree.io/klymenko.sasha21@gmail.com" method="post" class="form-contact" id="formContact">
           <h3 class="form-contact__title">Связаться со мной</h3>
-          <input type="text" placeholder="Имя" class="form-contact__input">
-          <input type="text" placeholder="Email" class="form-contact__input">
-          <textarea name="" id="" placeholder="Ваше сообщение" class="form-contact__msg"></textarea>
+          <input type="text" name="Name" placeholder="Имя" class="form-contact__input" id="formContactName">
+          <input type="text" name="Email" placeholder="Email" class="form-contact__input" id="formContactEmail">
+          <textarea name="Message" id="formContactMsg" placeholder="Ваше сообщение" class="form-contact__msg"></textarea>
           <div class="form-contact__button-wrap">
-            <button class="form-contact__button">Отправить</button>
-            <button class="form-contact__button form-contact__button--dark" id="js-formContactClean">Очистить</button>
+            <button class="form-contact__button" type="submit" @click="clearFormFields">Отправить</button>
+            <button class="form-contact__button form-contact__button--dark" id="js-formContactClean" v-on:click.prevent="clearFormFields">Очистить</button>
           </div>
         </form>
       </div>
@@ -83,6 +83,27 @@ import MenuHeader from "@/components/MenuHeader.vue";
 
 export default {
   name: "Works",
+  data: function() {
+    return {
+      works: [
+        {
+          title: "First work",
+          skills: "html, css, javascript",
+          link: "/welcome"
+        },
+        {
+          title: "Second work",
+          skills: "VueJS, Scss",
+          link: "/welcome"
+        },
+        {
+          title: "Third work",
+          skills: "Ruby&Rails, Scss",
+          link: "/welcome"
+        }
+      ]
+    };
+  },
   components: {
     SocialLinks,
     Footer,
@@ -102,6 +123,28 @@ export default {
       previewImg.src = newPreviewImg;
       thumbPrev.src = newThumbPrev;
       thumbNext.src = newThumbNext;
+    },
+    slideDown: function() {
+      let previewImg = document.body.querySelector('.work__img'),
+        thumbPrev = document.body.querySelector('.work__thumb--first .work__thumb-img'),
+        thumbNext = document.body.querySelector('.work__thumb--second .work__thumb-img');
+
+      let newPreviewImg = thumbPrev.src,
+        newThumbPrev = thumbNext.src,
+        newThumbNext = previewImg.src;
+
+      previewImg.src = newPreviewImg;
+      thumbPrev.src = newThumbPrev;
+      thumbNext.src = newThumbNext;
+    },
+    clearFormFields: function() {
+      let formNameField = document.getElementById('formContactName');
+      let formEmailField = document.getElementById('formContactEmail');
+      let formMsgField = document.getElementById('formContactMsg');
+
+      formNameField.value = '';
+      formEmailField.value = '';
+      formMsgField.value = '';
     }
   }
 };

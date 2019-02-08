@@ -1,14 +1,6 @@
 <template>
   <div class="menu">
-    <!--<button v-on:click="showMenu" class="menu__button" aria-label="open menu"></button>-->
-    <button v-on:click="showMenu" class="menu__btn" aria-label="open menu">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <button v-on:click="showMenu" class="menu__button" aria-label="open menu"></button>
     <nav class="menu__nav">
       <ul class="menu__list">
         <li class="menu__item">
@@ -21,7 +13,7 @@
           <router-link to="/about" class="menu__link" v-on:click.native="removeOpenedMenuClass">Обо мне</router-link>
         </li>
         <li class="menu__item">
-          <router-link to="/welcome" class="menu__link" v-on:click.native="removeOpenedMenuClass">Авторизация</router-link>
+          <router-link to="/welcome" class="menu__link" v-on:click.native="removeOpenedMenuClass">Главная</router-link>
         </li>
       </ul>
     </nav>
@@ -59,50 +51,7 @@ export default {
   height: 100vh;
   background: transparent;
   transition: all 0.4s ease;
-  &__btn {
-    position: absolute;
-    z-index: 5;
-    top: 30px;
-    right: 30px;
-    width: 60px;
-    height: 45px;
-    transform: rotate(0deg);
-    transition: 0.5s ease-in-out;
-    cursor: pointer;
-    outline: none;
-    span {
-      display: block;
-      position: absolute;
-      height: 9px;
-      width: 50%;
-      background: #fff;
-      opacity: 1;
-      transform: rotate(0deg);
-      transition: 0.25s ease-in-out;
-      &:nth-child(even) {
-        left: 50%;
-        border-radius: 0 9px 9px 0;
-      }
-      &:nth-child(odd) {
-        left: 0;
-        border-radius: 9px 0 0 9px;
-      }
-      &:nth-child(1),
-      &:nth-child(2) {
-        top: 0;
-      }
-      &:nth-child(3),
-      &:nth-child(4) {
-        top: 18px;
-      }
-      &:nth-child(5),
-      &:nth-child(6) {
-        top: 36px;
-      }
-    }
-  }
   &__button {
-    display: none;
     position: absolute;
     top: 30px;
     right: 30px;
@@ -117,7 +66,7 @@ export default {
   &__nav {
     display: none;
     justify-content: center;
-    padding-top: 100px;
+    padding-top: 80px;
   }
   &__list {
   }
@@ -139,7 +88,7 @@ export default {
       content: "";
       position: absolute;
       left: 0;
-      top: 30px;
+      top: 50%;
       width: 30px;
       height: 5px;
 
@@ -149,7 +98,7 @@ export default {
       content: "";
       position: absolute;
       right: 0;
-      top: 30px;
+      top: 50%;
 
       width: 30px;
       height: 5px;
@@ -166,69 +115,16 @@ export default {
     .menu__button {
       background-image: url("../assets/images/icons/close_menu.svg");
     }
-    .menu__btn {
-      span {
-        &:nth-child(1),
-        &:nth-child(6) {
-          transform: rotate(45deg);
-        }
-        &:nth-child(2),
-        &:nth-child(5) {
-          transform: rotate(-45deg);
-        }
-        &:nth-child(1) {
-          left: 5px;
-          top: 7px;
-        }
-        &:nth-child(2) {
-          left: calc(50% - 5px);
-          top: 7px;
-        }
-        &:nth-child(3) {
-          left: -50%;
-          opacity: 0;
-        }
-        &:nth-child(4) {
-          left: 100%;
-          opacity: 0;
-        }
-        &:nth-child(5) {
-          left: 5px;
-          top: 29px;
-        }
-        &:nth-child(6) {
-          left: calc(50% - 5px);
-          top: 29px;
-        }
-      }
+  }
+  @media all and (max-width: 960px) and (orientation: landscape) {
+    &__item {
+      margin-bottom: 25px;
+    }
+    &__link {
+      font-size: 30px;
     }
   }
   @media all and (max-width: 767px) {
-    &__btn {
-      width: 50px;
-      height: 32px;
-    }
-    &__btn span {
-      height: 4px;
-      &:nth-child(3),
-      &:nth-child(4) {
-        top: 13px;
-      }
-      &:nth-child(5),
-      &:nth-child(6) {
-        top: 26px;
-      }
-    }
-    &--active .menu__btn span {
-      &:nth-child(5) {
-        left: 5px;
-        top: 22px;
-      }
-      &:nth-child(6) {
-        left: calc(50% - 5px);
-        top: 22px;
-      }
-    }
     &__item {
       margin-bottom: 35px;
     }
@@ -236,9 +132,14 @@ export default {
       padding-left: 45px;
       padding-right: 45px;
       font-size: 36px;
-      &:before,
-      &:after {
-        top: 15px;
+    }
+    &__button {
+      width: 20px;
+      height: 20px;
+    }
+    @media all and (orientation: landscape) {
+      &__nav {
+        padding-top: 40px;
       }
     }
   }
